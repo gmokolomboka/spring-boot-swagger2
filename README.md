@@ -1,2 +1,3 @@
 # spring-boot-swagger2
-Sample project
+Sample project using Spring boot and Swagger
+
