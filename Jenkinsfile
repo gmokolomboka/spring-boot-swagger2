@@ -3,13 +3,7 @@ def gitUrl = "https://github.com/gmokolomboka/spring-boot-swagger2"
 pipeline {
     agent any
     stages {
-     
-     stage("Check code format") {
-            steps {
-                    bat 'mvn -B -Pdev spotless:check'
-            }
-        }
-        
+
      stage ('Compile Stage') {
             steps {
                     bat 'mvn clean compile'
