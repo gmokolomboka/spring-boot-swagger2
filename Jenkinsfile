@@ -28,5 +28,20 @@ pipeline {
                     bat 'mvn install'
             }
         }
+    
+    
+     stage("Integration tests") {
+            steps {
+                bat "mvn -B verify -Dunit.tests.skip -Pcode-coverage"
+            	junit testResults: '**/target/failsafe-reports/TEST-*.xml', allowEmptyResults: true
+            }
+        }
+        
+    stage('Package stage') {
+        steps {
+            bat 'mvn package -DskipTests'
+            }
+    } 
+        
     }
 }
