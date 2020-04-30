@@ -1,5 +1,3 @@
-@Library('rss-lib') _
-
 def gitUrl = "https://github.com/gmokolomboka/spring-boot-swagger2"
 
 pipeline {
