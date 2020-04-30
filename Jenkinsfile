@@ -11,9 +11,23 @@ pipeline {
         
         stage ('Test Stage') {
             steps {
-                    bat 'mvn clean install'
+                    bat 'mvn clean test'
             }
         }
+        
+        stage ('Mutation test Stage') {
+        	 steps {
+                    bat 'mvnw org.pitest:pitest-maven:mutationCoverage'
+            }
+        }
+        
+        stage ('Install Stage') {
+            steps {
+                    bat 'mvn install'
+            }
+        }
+        
+        
         
     }
 }
