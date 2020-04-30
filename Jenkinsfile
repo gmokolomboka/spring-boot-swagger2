@@ -56,9 +56,7 @@ pipeline {
 	
 	stage('Code inspection & quality gate') {
         steps {
-            withSonarQubeEnv('ci-sonarqube') {
                 bat 'mvn sonar:sonar'
-            }
             timeout(time: 10, unit: 'MINUTES') {
                 //waitForQualityGate abortPipeline: true
                 script {
@@ -80,23 +78,4 @@ pipeline {
     } 
         
     }
-    
-	    post {
-			success {
-				postBuildResult steps:this, gitUrl: "${gitUrl}", buildResult: 'success', label: 'build-success'
-			}
-			failure {
-				postBuildResult steps:this, gitUrl: "${gitUrl}", buildResult: 'failure', label: 'build-failure'
-				emailext to: "mokolomboka@yahoo.fr",
-						 subject: "Jenkins Build for TEST ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-						 body: "${currentBuild.currentResult}: ${env.JOB_NAME} - ${env.BUILD_NUMBER} Build failure\n More info at: ${env.BUILD_URL}"
-			}
-			aborted {
-				postBuildResult steps:this, gitUrl: "${gitUrl}", buildResult: 'aborted', label: 'build-aborted'
-			}
-			always {
-				echo "Always"
-			}
-		}
-    
 }
