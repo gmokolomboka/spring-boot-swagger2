@@ -68,7 +68,6 @@ pipeline {
             }
         }
     }
-	
         
     stage('Package stage') {
         steps {
@@ -78,12 +77,4 @@ pipeline {
     } 
         
     }
-    
-    
-     post { 
-        always { 
-        }
-    }
-    
-    
 }
