@@ -78,4 +78,12 @@ pipeline {
     } 
         
     }
+    
+    
+     post { 
+        always { 
+        }
+    }
+    
+    
 }
