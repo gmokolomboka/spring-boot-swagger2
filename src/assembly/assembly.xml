@@ -1,0 +1,26 @@
+<assembly>
+	<id>distribution</id>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>target</directory>
+			<includes>
+				<include>${project.artifactId}.jar</include>
+			</includes>
+			<outputDirectory>jar</outputDirectory>
+			<fileMode>0644</fileMode>
+		</fileSet>
+		<fileSet>
+			<directory>target/classes/scripts</directory>
+			<outputDirectory>scripts</outputDirectory>
+			<fileMode>0744</fileMode>
+		</fileSet>
+		<fileSet>
+			<directory>config/dev</directory>
+			<outputDirectory>config</outputDirectory>
+		</fileSet>
+	</fileSets>
+</assembly>
