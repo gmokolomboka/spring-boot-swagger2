@@ -14,6 +14,7 @@ pipeline {
             steps {
                 bat 'mvn -B clean test -Pcode-coverage'
                 junit '**/target/surefire-reports/TEST-*.xml'
+            	jacoco execPattern: 'target/jacoco.exec'
             }
         }
         
@@ -37,11 +38,65 @@ pipeline {
             }
         }
         
+        
+        stage('Performance tests') {
+        steps {
+            bat 'mvn jmeter:jmeter jmeter:results'
+            perfReport sourceDataFiles: 'target/jmeter/results/*.csv'
+        }
+    }
+    
+   stage('Dependency vulnerability tests') {
+    steps {
+        bat 'mvn dependency-check:check'
+        dependencyCheckPublisher failedTotalHigh: '0', unstableTotalHigh: '1', failedTotalNormal: '2', unstableTotalNormal: '5'
+    	}
+	}
+	
+	
+	stage('Code inspection & quality gate') {
+        steps {
+            withSonarQubeEnv('ci-sonarqube') {
+                bat 'mvn sonar:sonar'
+            }
+            timeout(time: 10, unit: 'MINUTES') {
+                //waitForQualityGate abortPipeline: true
+                script {
+                    def qg = waitForQualityGate()
+                    if (qg.status != 'OK' && qg.status != 'WARN') {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
+                }
+            }
+        }
+    }
+	
+        
     stage('Package stage') {
         steps {
             bat 'mvn package -DskipTests'
+             archiveArtifacts artifacts: 'target/*.jar', fingerprint: false
             }
     } 
         
     }
+    
+	    post {
+			success {
+				postBuildResult steps:this, gitUrl: "${gitUrl}", buildResult: 'success', label: 'build-success'
+			}
+			failure {
+				postBuildResult steps:this, gitUrl: "${gitUrl}", buildResult: 'failure', label: 'build-failure'
+				emailext to: "mokolomboka@yahoo.fr",
+						 subject: "Jenkins Build for TEST ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+						 body: "${currentBuild.currentResult}: ${env.JOB_NAME} - ${env.BUILD_NUMBER} Build failure\n More info at: ${env.BUILD_URL}"
+			}
+			aborted {
+				postBuildResult steps:this, gitUrl: "${gitUrl}", buildResult: 'aborted', label: 'build-aborted'
+			}
+			always {
+				echo "Always"
+			}
+		}
+    
 }
