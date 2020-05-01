@@ -59,7 +59,7 @@ pipeline {
 
 	stage('Code inspection & quality gate') {
         steps {
-                bat 'mvn sonar:sonar'
+                bat 'mvn sonar:sonar -Dsonar.host.url=http://127.0.0.1:9000'
         }   
     }
         
