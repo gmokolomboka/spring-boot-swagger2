@@ -64,7 +64,6 @@
 	<description>Demo project for Spring Boot</description>
 
 	<!-- url scm -->
-
 	<scm>
 		<url>https://github.com/gmokolomboka/spring-boot-swagger2</url>
 		<connection>scm:git:git://github.com/gmokolomboka/spring-boot-swagger2.git</connection>
@@ -80,7 +79,6 @@
 		</repository>
 	</repositories>
 
-
 	<!-- Push on nexus3 -->
 	<distributionManagement>
 		<snapshotRepository>
@@ -94,7 +92,6 @@
 	</distributionManagement>
 
 	<!-- application info -->
-
 	<ciManagement>
 		<system>continuum</system>
 		<url>http://127.0.0.1:9090/jenkins</url>
