@@ -59,7 +59,7 @@ pipeline {
 	
 	stage('Code inspection & quality gate') {
         steps {
-                bat 'mvn sonar:sonar -Dsonar.branch=${GIT_BRANCH}" -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.login=8456ddc4a9979e492429ffc1dce39e969db83c28'
+                bat 'mvn sonar:sonar -Dsonar.branch=${GIT_BRANCH} -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.login=8456ddc4a9979e492429ffc1dce39e969db83c28'
         }   
     }
         
