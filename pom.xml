@@ -82,18 +82,18 @@
 	<!-- Push on nexus3 -->
 	<distributionManagement>
 		<snapshotRepository>
-			<id>nexus</id>
-			<url>http://127.0.0.1:8081/repository/spring-boot-swagger2-snapshot/</url>
+			<id>nexus-snapshot</id>
+			<url>http://127.0.0.1:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>nexus-releases</id>
-			<url>http://127.0.0.1:8081/repository/spring-boot-swagger2-release/</url>
+			<url>http://127.0.0.1:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 
 	<!-- application info -->
 	<ciManagement>
-		<system>continuum</system>
+		<system>continum</system>
 		<url>http://127.0.0.1:9090/jenkins</url>
 		<notifiers>
 			<notifier>
@@ -250,6 +250,7 @@
 				</configuration>
 			</plugin>
 
+<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
@@ -258,6 +259,7 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
+ -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -268,6 +270,7 @@
 				</configuration>
 			</plugin>
 
+<!-- 
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -282,12 +285,12 @@
 					</execution>
 				</executions>
 				<configuration>
-					<serverId>nexus</serverId>
-					<nexusUrl>http://127.0.0.1:8081/nexus</nexusUrl>
+					<serverId>nexus-snapshot</serverId>
+					<nexusUrl>http://127.0.0.1:8081</nexusUrl>
 					<skipStaging>true</skipStaging>
 				</configuration>
 			</plugin>
-
+ -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
