@@ -3,6 +3,10 @@ def gitUrl = "https://github.com/gmokolomboka/spring-boot-swagger2"
 pipeline {
     agent any
     stages {
+    
+    options {
+    buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+  }
 
      stage ('Compile Stage') {
             steps {
@@ -49,14 +53,7 @@ pipeline {
         bat 'mvn dependency-check:check'
     	}
 	}
-	
-	
-	stage('Code inspection & quality gate') {
-        steps {
-                bat 'mvn sonar:sonar -Dsonar.host.url=http://127.0.0.1:9000 -Dsonar.login=8456ddc4a9979e492429ffc1dce39e969db83c28'
-        }
-    }
-        
+	    
     stage('Package stage') {
         steps {
             bat 'mvn package -DskipTests'
