@@ -141,6 +141,12 @@
 			<scope>test</scope>
 		</dependency>
 		
+	<dependency>
+	<groupId>org.sonarsource.scanner.maven</groupId>
+	<artifactId>sonar-maven-plugin</artifactId>
+	<version>3.2</version>
+	</dependency>
+			
 		<dependency>
         <groupId>org.jacoco</groupId>
         <artifactId>org.jacoco.agent</artifactId>
@@ -357,4 +363,20 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	
+<profiles>
+	<profile>
+		<id>sonar</id>
+		<activation>
+		<activeByDefault>true</activeByDefault>
+		</activation>
+		<properties>
+		<sonar.host.url>
+			http://127.0.0.1:9000
+		</sonar.host.url>
+		</properties>
+	</profile>
+</profiles>
+	
 </project>
