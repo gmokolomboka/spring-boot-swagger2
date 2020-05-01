@@ -41,7 +41,6 @@ pipeline {
         stage('Performance tests') {
         steps {
             bat 'mvn jmeter:jmeter jmeter:results'
-            perfReport sourceDataFiles: 'target/jmeter/results/*.csv'
         }
     }
     
