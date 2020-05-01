@@ -47,7 +47,6 @@ pipeline {
    stage('Dependency vulnerability tests') {
     steps {
         bat 'mvn dependency-check:check'
-        dependencyCheckPublisher failedTotalHigh: '0', unstableTotalHigh: '1', failedTotalNormal: '2', unstableTotalNormal: '5'
     	}
 	}
 	
