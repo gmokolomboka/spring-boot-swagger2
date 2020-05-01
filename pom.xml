@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -8,7 +9,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-    <parent>
+	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.2.RELEASE</version>
@@ -19,82 +20,82 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		
-		   <!-- JaCoCo -->
-        <jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
-        <jacoco.unit.tests.dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec
-        </jacoco.unit.tests.dataFile>
-        <jacoco.integration.tests.dataFile>${project.build.directory}/coverage-reports/jacoco-it.exec
-        </jacoco.integration.tests.dataFile>
 
-        <!-- Sonar -->
-        <sonar-maven-plugin.version>3.0.2</sonar-maven-plugin.version>
-        <sonar.sources>${project.basedir}/src/main/</sonar.sources>
-        <sonar.java.source>8</sonar.java.source>
-        <sonar.junit.reportPaths>
-            ${project.build.directory}/surefire-reports/,${project.build.directory}/failsafe-reports/
-        </sonar.junit.reportPaths>
-        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-        <sonar.jacoco.reportPaths>${jacoco.unit.tests.dataFile},${jacoco.integration.tests.dataFile}
-        </sonar.jacoco.reportPaths>
+		<!-- JaCoCo -->
+		<jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
+		<jacoco.unit.tests.dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec
+		</jacoco.unit.tests.dataFile>
+		<jacoco.integration.tests.dataFile>${project.build.directory}/coverage-reports/jacoco-it.exec
+		</jacoco.integration.tests.dataFile>
 
-        <!--TEST -->
-        <surefire.version>2.22.1</surefire.version>
-        <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
-        <jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
+		<!-- Sonar -->
+		<sonar-maven-plugin.version>3.0.2</sonar-maven-plugin.version>
+		<sonar.sources>${project.basedir}/src/main/</sonar.sources>
+		<sonar.java.source>8</sonar.java.source>
+		<sonar.junit.reportPaths>
+			${project.build.directory}/surefire-reports/,${project.build.directory}/failsafe-reports/
+		</sonar.junit.reportPaths>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.jacoco.reportPaths>${jacoco.unit.tests.dataFile},${jacoco.integration.tests.dataFile}
+		</sonar.jacoco.reportPaths>
 
-        <integration.tests.skip>true</integration.tests.skip>
+		<!--TEST -->
+		<surefire.version>2.22.1</surefire.version>
+		<maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
+		<jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
 
-        <junit.jupiter.version>5.5.2</junit.jupiter.version>
-        <junit.jupiter-api.version>5.5.2</junit.jupiter-api.version>
+		<integration.tests.skip>true</integration.tests.skip>
+
+		<junit.jupiter.version>5.5.2</junit.jupiter.version>
+		<junit.jupiter-api.version>5.5.2</junit.jupiter-api.version>
 
 		<gitflow-maven-plugin.version>1.13.0</gitflow-maven-plugin.version>
 		<git-commit-id-plugin.version>2.2.5</git-commit-id-plugin.version>
-		
-		 <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss.SSS z</maven.build.timestamp.format>
-        <app.name>${project.artifactId}</app.name>
-        <app.version>${project.version}</app.version>
-        <app.build.date>${maven.build.timestamp}</app.build.date>
-		
+
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss.SSS z</maven.build.timestamp.format>
+		<app.name>${project.artifactId}</app.name>
+		<app.version>${project.version}</app.version>
+		<app.build.date>${maven.build.timestamp}</app.build.date>
+
 	</properties>
 
 
 	<name>spring-boot-swagger2</name>
 	<description>Demo project for Spring Boot</description>
 
-    <!-- url scm -->
+	<!-- url scm -->
 
-    <scm>
-        <url>https://github.com/gmokolomboka/spring-boot-swagger2</url>
-        <connection>scm:git:git://github.com/gmokolomboka/spring-boot-swagger2.git</connection>
-        <developerConnection>scm:git:git@github.com:gmokolomboka/spring-boot-swagger2.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
+	<scm>
+		<url>https://github.com/gmokolomboka/spring-boot-swagger2</url>
+		<connection>scm:git:git://github.com/gmokolomboka/spring-boot-swagger2.git</connection>
+		<developerConnection>scm:git:git@github.com:gmokolomboka/spring-boot-swagger2.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
-    <!-- Download dependency from nexus 3 -->
-    <repositories>
-        <repository>
-            <id>maven-central</id>
-            <url>http://127.0.0.1:8081/repository/maven-central/</url>
-        </repository>
-    </repositories>
-    
+	<!-- Download dependency from nexus 3 -->
+	<repositories>
+		<repository>
+			<id>maven-central</id>
+			<url>http://127.0.0.1:8081/repository/maven-central/</url>
+		</repository>
+	</repositories>
 
-    <!-- Push on nexus3 -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <url>http://127.0.0.1:8081/repository/spring-boot-swagger2-snapshot/</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus-releases</id>
-            <url>http://127.0.0.1:8081/repository/spring-boot-swagger2-release/</url>
-        </repository>
-    </distributionManagement>
 
-    <!-- application info -->
+	<!-- Push on nexus3 -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus</id>
+			<url>http://127.0.0.1:8081/repository/spring-boot-swagger2-snapshot/</url>
+		</snapshotRepository>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://127.0.0.1:8081/repository/spring-boot-swagger2-release/</url>
+		</repository>
+	</distributionManagement>
 
-<ciManagement>
+	<!-- application info -->
+
+	<ciManagement>
 		<system>continuum</system>
 		<url>http://127.0.0.1:9090/jenkins</url>
 		<notifiers>
@@ -140,21 +141,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-	<dependency>
-	<groupId>org.sonarsource.scanner.maven</groupId>
-	<artifactId>sonar-maven-plugin</artifactId>
-	<version>3.2</version>
-	</dependency>
-			
+
+		<!-- <dependency> <groupId>org.sonarsource.scanner.maven</groupId> <artifactId>sonar-maven-plugin</artifactId> 
+			<version>3.2</version> </dependency> -->
 		<dependency>
-        <groupId>org.jacoco</groupId>
-        <artifactId>org.jacoco.agent</artifactId>
-        <version>0.8.3</version>
-        <classifier>runtime</classifier>
-        <scope>test</scope>
-    </dependency>
-		
+			<groupId>org.jacoco</groupId>
+			<artifactId>org.jacoco.agent</artifactId>
+			<version>0.8.3</version>
+			<classifier>runtime</classifier>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -163,53 +160,49 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
-			<!-- performance tests -->
-        <plugin>
-            <groupId>com.lazerycode.jmeter</groupId>
-            <artifactId>jmeter-maven-plugin</artifactId>
-            <version>2.8.5</version>
-            <configuration>
-                <testResultsTimestamp>false</testResultsTimestamp>
-            </configuration>
-        </plugin>
-        
-		<plugin>
-                <groupId>org.owasp</groupId>
-                <artifactId>dependency-check-maven</artifactId>
-                <version>5.3.2</version>
-                <configuration>
-                 <showSummary>false</showSummary>
-                    <skipProvidedScope>true</skipProvidedScope>
-                    <skipRuntimeScope>true</skipRuntimeScope>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-		
-		
 
-			
+			<!-- performance tests -->
 			<plugin>
-            <groupId>org.pitest</groupId>
-            <artifactId>pitest-maven</artifactId>
-            <version>1.4.5</version>
-            <configuration>
-                <excludedTestClasses>
-                    <param>*ApplicationTests</param>
-                    <param>*IntegrationTest</param>
-                </excludedTestClasses>
-                <outputFormats>
-                    <outputFormat>XML</outputFormat>
-                </outputFormats>
-            </configuration>
-        </plugin>
-			
+				<groupId>com.lazerycode.jmeter</groupId>
+				<artifactId>jmeter-maven-plugin</artifactId>
+				<version>2.8.5</version>
+				<configuration>
+					<testResultsTimestamp>false</testResultsTimestamp>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>5.3.2</version>
+				<configuration>
+					<showSummary>false</showSummary>
+					<skipProvidedScope>true</skipProvidedScope>
+					<skipRuntimeScope>true</skipRuntimeScope>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.4.5</version>
+				<configuration>
+					<excludedTestClasses>
+						<param>*ApplicationTests</param>
+						<param>*IntegrationTest</param>
+					</excludedTestClasses>
+					<outputFormats>
+						<outputFormat>XML</outputFormat>
+					</outputFormats>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -219,73 +212,95 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-dependency-plugin</artifactId>
-    <version>3.1.1</version>
-    <executions>
-        <execution>
-            <phase>package</phase>
-            <goals>
-                <goal>copy</goal>
-            </goals>
-            <configuration>
-                <artifactItems>
-                    <artifactItem>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>org.jacoco.agent</artifactId>
-                        <version>0.8.3</version>
-                        <classifier>runtime</classifier>
-                        <destFileName>jacocoagent.jar</destFileName>
-                    </artifactItem>
-                    <artifactItem>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>org.jacoco.cli</artifactId>
-                        <version>0.8.3</version>
-                        <classifier>nodeps</classifier>
-                        <destFileName>jacococli.jar</destFileName>
-                    </artifactItem>
-                </artifactItems>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
-			
-			 <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.jacoco</groupId>
+									<artifactId>org.jacoco.agent</artifactId>
+									<version>0.8.3</version>
+									<classifier>runtime</classifier>
+									<destFileName>jacocoagent.jar</destFileName>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.jacoco</groupId>
+									<artifactId>org.jacoco.cli</artifactId>
+									<version>0.8.3</version>
+									<classifier>nodeps</classifier>
+									<destFileName>jacococli.jar</destFileName>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<executable>true</executable>
 				</configuration>
-            </plugin>
-            
-             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-            </plugin>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
-                <configuration>
-                    <encoding>${source.encoding}</encoding>
-                    <includeEmptyDirs>true</includeEmptyDirs>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<encoding>${source.encoding}</encoding>
+					<includeEmptyDirs>true</includeEmptyDirs>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${source.encoding}</encoding>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.5.1</version>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<serverId>nexus</serverId>
+					<nexusUrl>http://127.0.0.1:8081/nexus</nexusUrl>
+					<skipStaging>true</skipStaging>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${source.encoding}</encoding>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -363,20 +378,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	
-<profiles>
-	<profile>
-		<id>sonar</id>
-		<activation>
-		<activeByDefault>true</activeByDefault>
-		</activation>
-		<properties>
-		<sonar.host.url>
-			http://127.0.0.1:9000
-		</sonar.host.url>
-		</properties>
-	</profile>
-</profiles>
-	
+
+	<!-- <profiles> <profile> <id>sonar</id> <activation> <activeByDefault>true</activeByDefault> 
+		</activation> <properties> <sonar.host.url> http://127.0.0.1:9000 </sonar.host.url> 
+		</properties> </profile> </profiles> -->
 </project>
