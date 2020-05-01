@@ -1,5 +1,7 @@
 package com.example.springbootswagger2;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +29,7 @@ public class SpringBootSwagger2ApplicationTests {
 
     @Test
     public void getStudentByCountry() {
+        
         Assert.assertTrue( students == null );
     }
 
