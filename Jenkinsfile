@@ -68,7 +68,16 @@ pipeline {
             bat 'mvn package -DskipTests'
              archiveArtifacts artifacts: 'target/*.jar', fingerprint: false
             }
-    } 
+    }
+    
+    
+		stage("Nexus deploy") {
+				
+			steps {
+					bat 'mvn deploy -DskipTests -Dmaven.install.skip=true'
+			}
+		}
+     
         
     }
 }
