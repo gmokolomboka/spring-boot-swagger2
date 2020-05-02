@@ -60,20 +60,22 @@ pipeline {
 		}
     }
 
-     post {
-    		success {
-                    echo "MOST DEFINITELY FINISHED"
-                }
-
-            failure {
-                    echo "I FAILED"
-                }
-
-            cleanup {
-                    echo "I RAN ANYWAY"
-                }
-            always {
-                    error "I AM FAILING NOW"
-                }
-    	}
+post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
+        }
+    }
 }
