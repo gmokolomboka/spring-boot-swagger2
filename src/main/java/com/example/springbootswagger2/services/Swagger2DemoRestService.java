@@ -10,4 +10,5 @@ public interface Swagger2DemoRestService
     public Student getStudent(String name) ;
     public List<Student> getStudentByCountry(String country);
     public List<Student> getStudentByClass(String cls);
+    
 }

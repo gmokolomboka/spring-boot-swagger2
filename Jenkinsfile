@@ -6,78 +6,74 @@ pipeline {
     options {
     	buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
   	}
-    
-    
+
     stages {
 
-     stage ('Compile Stage') {
+     stage ('Build') {
             steps {
-                    bat 'mvn clean compile'
+                bat 'mvn clean install'
             }
         }
         
-    stage("Unit tests Stage") {
+    stage("Unit test") {
             steps {
                 bat 'mvn -B clean test -Pcode-coverage'
                 junit '**/target/surefire-reports/TEST-*.xml'
             }
         }
         
-     stage ('Mutation test Stage') {
+     stage ('Mutation test') {
         	 steps {
                     bat 'mvnw org.pitest:pitest-maven:mutationCoverage'
             }
         }
-        
-     stage ('Install Stage') {
-            steps {
-                    bat 'mvn install'
-            }
-        }
-    
-    
-     stage("Integration tests") {
+
+     stage("Integration test") {
             steps {
                 bat "mvn -B verify -Dunit.tests.skip -Pcode-coverage"
             	junit testResults: '**/target/failsafe-reports/TEST-*.xml', allowEmptyResults: true
             }
         }
-        
-        
-        stage('Performance tests') {
+
+        stage('Performance test') {
         steps {
             bat 'mvn jmeter:jmeter jmeter:results'
         }
     }
     
-   stage('Dependency vulnerability tests') {
+   stage('Dependency vulnerability test') {
     steps {
         bat 'mvn dependency-check:check'
     	}
 	}
-	
 
-	stage('Code inspection & quality gate') {
+	stage('SonarQube analysis') {
         steps {
-                bat 'mvn sonar:sonar -Dsonar.host.url=http://127.0.0.1:9000'
-        }   
+                bat 'mvn clean package sonar:sonar'
+        }
     }
         
-    stage('Package stage') {
-        steps {
-            bat 'mvn package -DskipTests'
-             archiveArtifacts artifacts: 'target/*.jar', fingerprint: false
-            }
-    }
-    
-    
-		stage("Nexus deploy") {
-				
+	stage("Nexus deploy") {
 			steps {
 					bat 'mvn deploy -DskipTests -Dmaven.install.skip=true'
 			}
 		}
-     
-        
     }
+
+     post {
+    		success {
+                    echo "MOST DEFINITELY FINISHED"
+                }
+
+            failure {
+                    echo "I FAILED"
+                }
+
+            cleanup {
+                    echo "I RAN ANYWAY"
+                }
+            always {
+                    error "I AM FAILING NOW"
+                }
+    	}
 }
