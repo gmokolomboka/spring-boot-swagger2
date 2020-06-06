@@ -1,0 +1,14 @@
+[Unit]
+Description=swagger Service
+
+[Service]
+User=gmokolomb
+WorkingDirectory=/opt/sbs/
+ExecStart=/usr/bin/java -Xmx256m -jar sbs.jar
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

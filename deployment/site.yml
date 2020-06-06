@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  remote_user: gmokolomb
+  roles:
+     - deploy
+
+  vars:
+    - sbs_port: 8082
+    - ansible_ssh_private_key_file: "C:\glm\sshvmkeys\id_rsa"

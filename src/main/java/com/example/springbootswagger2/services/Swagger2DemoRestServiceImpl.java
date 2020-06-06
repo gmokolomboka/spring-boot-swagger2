@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.example.springbootswagger2.model.Student;
+import org.springframework.stereotype.Service;
 
+@Service
 public class Swagger2DemoRestServiceImpl implements Swagger2DemoRestService
 {
     
