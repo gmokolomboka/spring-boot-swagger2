@@ -6,4 +6,4 @@
 
   vars:
     - sbs_port: 8082
-    - ansible_ssh_private_key_file: "C:\glm\sshvmkeys\id_rsa"
+
