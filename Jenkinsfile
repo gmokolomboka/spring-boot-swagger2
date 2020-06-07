@@ -63,7 +63,7 @@ pipeline {
             steps {
                 dir('deployment'){
                     echo 'Deploying to test'
-                    bat 'bash -c ansible-playbook -vvvv -i dev-servers site.yml'
+                    bat 'bash -c ansible-playbook -i dev-servers site.yml'
                 }
             }
         }
