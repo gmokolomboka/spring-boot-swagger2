@@ -63,7 +63,7 @@ pipeline {
             steps {
                 dir('deployment'){
                     echo 'Deploying to test'
-                    bat 'ansible-playbook -vvvv --private-key=C:\glm\sshvmkeys\id_rsa -i dev-servers site.yml'
+                    bat 'ansible-playbook -vvvv -i dev-servers site.yml'
                 }
             }
         }
