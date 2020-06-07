@@ -58,6 +58,15 @@ pipeline {
 					bat 'mvn deploy -DskipTests -Dmaven.install.skip=true'
 			}
 		}
+
+    stage('Deploy on dev to test'){
+            steps {
+                dir('deployment'){
+                    echo 'Deploying to test'
+                    bat 'ansible-playbook -vvvv --private-key=C:\glm\sshvmkeys\id_rsa -i dev-servers site.yml'
+                }
+            }
+        }
     }
 
 post {
