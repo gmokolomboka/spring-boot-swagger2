@@ -63,7 +63,7 @@ pipeline {
             steps {
                 dir('deployment'){
                     echo 'Deploying to test'
-                    bat 'bash -c ansible-playbook -i dev-servers site.yml'
+                    bat 'wsl ansible-playbook -i dev-servers site.yml'
                 }
             }
         }
@@ -81,7 +81,7 @@ post {
             echo 'I am unstable :/'
         }
         failure {
-            echo 'I failed :('
+            echo 'I failed '
         }
         changed {
             echo 'Things were different before...'
