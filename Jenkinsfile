@@ -41,7 +41,7 @@ pipeline {
         }
     }
     
-   stage('Dependency vulnerability test') {
+   stage('vulnerability') {
     steps {
         bat 'mvn org.owasp:dependency-check-maven:aggregate -Dformat=xml'
     	}
