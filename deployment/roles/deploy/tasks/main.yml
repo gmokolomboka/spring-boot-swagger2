@@ -1,25 +1,25 @@
 - name: Create directory to install
   file:
-    path: /opt/sbs
+    path: ~/appli/sbs
     state: directory
     mode: '0755'
 
 - name: Download spring boot swagger runnable jar
   get_url:
     url: http://127.0.0.1:8081/#browse/browse:maven-snapshots:com%2Fexample%2Fspring-boot-swagger2%2F0.0.1-SNAPSHOT
-    dest: /opt/sbs/sbs.jar
+    dest: ~/appli/sbs/sbs.jar
     backup: yes
     force: yes
 
 - name: Ensure app is configured
   template:
     src: application.properties.j2
-    dest: /opt/sbs/application.properties
+    dest: ~/appli/sbs/application.properties
 
 - name: Ensure logging is configured
   template:
     src: logback-spring.xml.j2
-    dest: /opt/sbs/logback-spring.xml
+    dest: ~/appli/sbs/logback-spring.xml
 
 - name: Install sbs systemd unit file
   template: src=sbs.service.j2 dest=/etc/systemd/system/sbs.service

@@ -43,22 +43,22 @@ pipeline {
     
    stage('Dependency vulnerability test') {
     steps {
-        bat 'mvn dependency-check:check'
+        bat 'mvn org.owasp:dependency-check-maven:aggregate -Dformat=xml'
     	}
 	}
-
+/*
 	stage('SonarQube analysis') {
         steps {
                 bat 'mvn clean package sonar:sonar'
         }
     }
-        
+ */
 	stage("Nexus deploy") {
 			steps {
 					bat 'mvn deploy -DskipTests -Dmaven.install.skip=true'
 			}
 		}
-
+    /*
     stage('Deploy on dev to test'){
             steps {
                 dir('deployment'){
@@ -67,6 +67,7 @@ pipeline {
                 }
             }
         }
+     */
     }
 
 post {
