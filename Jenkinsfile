@@ -70,14 +70,18 @@ pipeline {
      */
     }
 
+
 post {
         always {
             echo 'One way or another, I have finished'
             deleteDir() /* clean up our workspace */
         }
-        success {
-            echo 'I succeeeded!'
-        }
+
+         success {
+            step([$class: 'DependencyCheckPublisher'])
+          }
+
+
         unstable {
             echo 'I am unstable :/'
         }
