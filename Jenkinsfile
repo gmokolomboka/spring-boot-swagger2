@@ -78,7 +78,7 @@ post {
         }
 
          success {
-            step([$class: 'DependencyCheckPublisher'])
+           step([$class: 'DependencyCheckPublisher', unstableTotalHigh: 1])
           }
 
 
